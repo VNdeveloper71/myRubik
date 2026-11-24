@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Monkey League – Rubik vs Bot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="stage" id="stage">
+      <div class="side p">
+        <div class="avatar">🧑</div>
+        <div class="big" id="bigP">0.00</div>
+        <div class="tag" id="tagP">Bạn</div>
+      </div>
+      <div class="side b">
+        <div class="avatar">🤖</div>
+        <div class="big" id="bigB">0.00</div>
+        <div class="tag" id="tagB">Bot</div>
+      </div>
+      <div class="divider"></div>
+      <div class="scramble" id="scr"></div>
+      <div class="msg" id="msg"></div>
+    </div>
+    <div class="bar">
+      <div class="logo"><i></i>TheCubicle</div>
+      <div class="med">MEDIAN<b id="medP">–</b></div>
+      <div class="time" id="timeP">0.00</div>
+      <div class="name">Bạn</div>
+      <div class="sets">SETS<b id="setP">0</b></div>
+      <div class="pts" id="ptsP">0</div>
+      <div class="pts" id="ptsB">0</div>
+      <div class="sets">SETS<b id="setB">0</b></div>
+      <div class="name">Bot</div>
+      <div class="time" id="timeB">0.00</div>
+      <div class="med">MEDIAN<b id="medB">–</b></div>
+      <div class="info">Monkey League<small>S6 Swiss R3: bo5 sets</small></div>
+    </div>
+    <div class="cfg">
+      Bot – trung bình (giây): <input id="mean" type="number" value="32" min="5" step="0.5">
+      Sigma: <input id="sigma" type="number" value="4" min="0.5" step="0.5">
+      Min: <input id="min" type="number" value="15" min="5" step="0.5">
+    </div>
+    <div class="hint">Space (hoặc chạm màn hình): bắt đầu xem scramble, bắt đầu giải, dừng. Mỗi lượt có 15 giây xem
+      scramble theo luật WCA: quá 15 giây mới giải bị +2, quá 17 giây là DNF. Bot tự bắt đầu giải ở một giây ngẫu nhiên
+      trong lúc xem. Người đi trước được chọn ngẫu nhiên ở ván 1 rồi đổi lượt mỗi ván. Mỗi set 3 điểm, thắng 3 set là
+      thắng trận.</div>
+    <div class="leave-match">
+      <button class="leave-button" id="leaveMatch" type="button">Rời trận đấu</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

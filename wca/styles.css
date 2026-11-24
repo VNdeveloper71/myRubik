@@ -1,0 +1,258 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b0b0e;
+  --panel1: #2a2118;
+  --panel2: #1d2330;
+  --red: #e0141e;
+  --purple: #6b2fd1;
+  --orange: #f7931e;
+  --bar: #164f7d;
+  --box: #26262c;
+  --text: #f4f4f6;
+  --muted: #9a9aa5;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px)
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 12px
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1100px
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  aspect-ratio: 16/8.4;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px
+}
+
+.side.p {
+  background: radial-gradient(circle at 50% 40%, #3b2d1f, var(--panel1))
+}
+
+.side.b {
+  background: radial-gradient(circle at 50% 40%, #2c3850, var(--panel2))
+}
+
+.avatar {
+  font-size: clamp(40px, 9vw, 96px)
+}
+
+.big {
+  font-family: Consolas, "Courier New", monospace;
+  font-weight: 700;
+  font-size: clamp(32px, 8vw, 84px)
+}
+
+.tag {
+  color: var(--muted);
+  font-size: clamp(11px, 1.6vw, 16px);
+  letter-spacing: .12em;
+  text-transform: uppercase
+}
+
+.divider {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--bg);
+  transform: translateX(-50%)
+}
+
+.scramble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 14px;
+  text-align: center;
+  background: linear-gradient(#000c, #0000);
+  font-family: Consolas, monospace;
+  font-size: clamp(11px, 2vw, 20px);
+  letter-spacing: .06em
+}
+
+.msg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(13px, 2.2vw, 22px);
+  text-shadow: 0 2px 6px #000
+}
+
+.bar {
+  display: flex;
+  align-items: stretch;
+  height: clamp(44px, 7vw, 64px);
+  background: var(--bar);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  font-weight: 700
+}
+
+.bar>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(6px, 1.2vw, 14px);
+  border: 4px solid #164f7d
+}
+
+.logo {
+  background: #164f7d;
+  color: #ffffff;
+  font-size: clamp(11px, 1.8vw, 18px);
+  gap: 6px
+}
+
+.logo i {
+  width: 1.1em;
+  height: 1.1em;
+  background: conic-gradient(#e0141e 0 25%, #2fa84f 0 50%, #2f6bd1 0 75%, #f7c31e 0);
+  border-radius: 3px
+}
+
+.med {
+  flex-direction: column;
+  background: #3b3b3b;
+  font-size: clamp(9px, 1.2vw, 12px);
+  color: var(--muted);
+  line-height: 1.1
+}
+
+.med b {
+  color: var(--text);
+  font-size: clamp(13px, 2vw, 20px)
+}
+
+.time {
+  background: #000;
+  color: #ff1a1a;
+  font-size: clamp(16px, 3vw, 30px);
+  min-width: clamp(52px, 8vw, 68px);
+  padding: 0 clamp(2px, 0.5vw, 6px);
+  border: 5px solid rgb(0, 145, 255) !important;
+}
+
+.name {
+  background: #fff;
+  color: #111;
+  flex: 1;
+  font-size: clamp(14px, 2.4vw, 26px)
+}
+
+.sets {
+  background: var(--purple);
+  flex-direction: column;
+  font-size: clamp(8px, 1.1vw, 11px);
+  line-height: 1.1
+}
+
+.sets b {
+  font-size: clamp(14px, 2.2vw, 22px)
+}
+
+.pts {
+  background: var(--orange);
+  color: #111;
+  font-size: clamp(18px, 3.2vw, 32px);
+  min-width: clamp(30px, 4.5vw, 50px)
+}
+
+.info {
+  flex-direction: column;
+  align-items: flex-start !important;
+  font-size: clamp(11px, 1.8vw, 18px);
+  line-height: 1.15;
+  text-align: left;
+  min-width: clamp(90px, 16vw, 170px)
+}
+
+.info small {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: clamp(8px, 1.2vw, 12px)
+}
+
+.cfg {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px
+}
+
+.cfg input {
+  width: 64px;
+  background: var(--box);
+  color: var(--text);
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 6px
+}
+
+.hint {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px
+}
+
+.leave-match {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px
+}
+
+.leave-button {
+  border: 1px solid #e0141e;
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: #351216;
+  color: #fff;
+  font: inherit;
+  cursor: pointer
+}
+
+.leave-button:hover {
+  background: #57171d
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101218">
+  <title>Rubik Timer</title>
+  <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+  <main class="app">
+    <header class="page-header">
+      <h1>Rubik Timer</h1>
+      <p>Nhấn Space để xem scramble · giữ Space 3 giây đến khi xanh rồi thả để bắt đầu</p>
+      <p class="league-invite">
+        Giải đấu Monkey League (bot):
+        <a class="league-link" href="versusbot.html">Tham gia</a>
+      </p>
+    </header>
+
+    <section class="scramble-card" aria-label="Scramble hiện tại">
+      <div class="section-heading">
+        <h2>Scramble</h2>
+        <button class="secondary-button" id="newScramble" type="button">Scramble mới</button>
+      </div>
+      <p class="scramble" id="scramble" aria-live="polite"></p>
+    </section>
+
+    <section class="timer-section" aria-label="Đồng hồ bấm giờ">
+      <div class="timer-surface" id="timerSurface" role="group" tabindex="0" aria-label="Vùng hiển thị và điều khiển timer">
+        <span class="timer-caption" id="timerCaption">SẴN SÀNG</span>
+        <span class="timer-display" id="timerDisplay">0.00</span>
+        <span class="timer-hint" id="timerHint">Nhấn Space để bắt đầu xem scramble</span>
+      </div>
+      <div class="penalties" id="penalties" hidden>
+        <span>Áp dụng hình phạt cho lần giải này:</span>
+        <button class="penalty-button" id="dnfButton" type="button" aria-pressed="false">DNF</button>
+        <button class="penalty-button" id="plusTwoButton" type="button" aria-pressed="false">+2</button>
+      </div>
+      <p class="storage-status" id="storageStatus" role="status" hidden></p>
+    </section>
+
+    <section class="stats" aria-label="Thống kê">
+      <article class="stat-card">
+        <h2>Ao5</h2>
+        <p class="stat-value" id="ao5">–</p>
+        <p class="stat-detail">PB: <span id="pbAo5">–</span></p>
+      </article>
+      <article class="stat-card">
+        <h2>Ao12</h2>
+        <p class="stat-value" id="ao12">–</p>
+        <p class="stat-detail">PB: <span id="pbAo12">–</span></p>
+      </article>
+      <article class="stat-card">
+        <h2>Số lần giải</h2>
+        <p class="stat-value" id="solveCount">0</p>
+        <p class="stat-detail">Tổng số lần giải đã lưu</p>
+      </article>
+      <article class="stat-card">
+        <h2>PB đơn</h2>
+        <p class="stat-value" id="pbSingle">–</p>
+        <p class="stat-detail">Thành tích tốt nhất</p>
+      </article>
+    </section>
+
+    <section class="history-section" aria-labelledby="historyHeading">
+      <div class="section-heading">
+        <h2 id="historyHeading">Lịch sử giải</h2>
+        <button class="secondary-button" id="historyToggle" type="button" aria-expanded="true" aria-controls="historyContent">Ẩn lịch sử</button>
+      </div>
+      <div id="historyContent">
+        <ol class="solve-list" id="solveList"></ol>
+        <p class="empty-state" id="emptyState">Chưa có lần giải nào. Lịch sử sẽ được lưu trên thiết bị này.</p>
+      </div>
+    </section>
+
+    <section class="learning-section" aria-labelledby="learningHeading">
+      <h2 id="learningHeading">Học giải Rubik</h2>
+      <div class="learning-list">
+        <article class="learning-card">
+          <h3>1. Bạn chưa biết cách giải?</h3>
+          <p>Học tại đây:
+            <a href="https://myrubik.com/vi/solve/3x3x3/beginner" target="_blank" rel="noopener noreferrer">Hướng dẫn giải Rubik 3x3 cơ bản</a>
+          </p>
+        </article>
+        <article class="learning-card">
+          <h3>2. Bạn muốn học nâng cao hơn?</h3>
+          <p>Học Phương pháp Fridrich rút gọn:
+            <a href="https://myrubik.com/vi/solve/3x3x3/reduced-fridrich" target="_blank" rel="noopener noreferrer">Fridrich rút gọn</a>
+          </p>
+          <ul class="learning-links">
+            <li><a href="http://myrubik.com/vi/solve/3x3x3/complete-fridrich/f2l" target="_blank" rel="noopener noreferrer">Full F2L</a></li>
+            <li><a href="http://myrubik.com/vi/solve/3x3x3/complete-fridrich/oll" target="_blank" rel="noopener noreferrer">Full OLL</a></li>
+            <li><a href="http://myrubik.com/vi/solve/3x3x3/complete-fridrich/pll" target="_blank" rel="noopener noreferrer">Full PLL</a></li>
+          </ul>
+        </article>
+        <article class="learning-card">
+          <h3>3. Mẹo CROSS 8 bước:</h3>
+          <p>Xem tại đây:
+            <a href="https://rubikonline.vn/7-meo-giup-ban-giai-cross-dau-cong-rubik-hieu-qua-hon" target="_blank" rel="noopener noreferrer">7 mẹo giải CROSS hiệu quả</a>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="timer.js"></script>
+</body>
+</html>
