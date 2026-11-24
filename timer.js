@@ -1,5 +1,5 @@
 const INSPECTION_SECONDS = 15;
-const HOLD_SECONDS = 3;
+const HOLD_SECONDS = 1;
 const STORAGE_KEY = "rubik-timer-solves-v1";
 const FACES = ["R", "L", "U", "D", "F", "B"];
 const SUFFIXES = ["", "’", "2"];
@@ -172,7 +172,7 @@ function startInspection() {
   setTimerText(
     "ĐANG XEM SCRAMBLE",
     String(INSPECTION_SECONDS),
-    "Nhấn và giữ Space 3 giây đến khi xanh, rồi thả để bắt đầu"
+    "Nhấn và giữ Space 1 giây đến khi xanh, rồi thả để bắt đầu"
   );
   cancelAnimationFrame(animationFrame);
   animationFrame = requestAnimationFrame(updateTimer);
@@ -230,7 +230,7 @@ function updateTimer() {
       String(Math.ceil(remaining)),
       isReady
         ? "Thả Space để bắt đầu tính giờ"
-        : "Nhấn và giữ Space 3 giây đến khi xanh, rồi thả để bắt đầu"
+        : "Nhấn và giữ Space 1 giây đến khi xanh, rồi thả để bắt đầu"
     );
   } else if (phase === "solving") {
     setTimerText("ĐANG GIẢI", formatTime((now - solveStartedAt) / 1000), "Nhấn Space để dừng");
@@ -250,9 +250,10 @@ function togglePenalty(penalty) {
 }
 
 function handleSpaceDown(event) {
-  if (event.code !== "Space" || event.repeat) return;
-  if (event.target instanceof HTMLElement && event.target.closest("button")) return;
+  if (event.code !== "Space") return;
+  if (event.target instanceof HTMLElement && event.target.closest("button, input, textarea, select, [contenteditable='true']")) return;
   event.preventDefault();
+  if (event.repeat) return;
 
   if (phase === "ready" || phase === "result") {
     startInspection();
