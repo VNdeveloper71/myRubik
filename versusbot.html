@@ -27,29 +27,65 @@
     </div>
     <div class="bar">
       <div class="logo"><i></i>TheCubicle</div>
-      <div class="med">MEDIAN<b id="medP">–</b></div>
+      <div class="med" id="medCellP">MEDIAN<b id="medP">–</b></div>
       <div class="time" id="timeP">0.00</div>
       <div class="name">Bạn</div>
-      <div class="sets">SETS<b id="setP">0</b></div>
+      <div class="sets" id="setsCellP">SETS<b id="setP">0</b></div>
       <div class="pts" id="ptsP">0</div>
       <div class="pts" id="ptsB">0</div>
-      <div class="sets">SETS<b id="setB">0</b></div>
+      <div class="sets" id="setsCellB">SETS<b id="setB">0</b></div>
       <div class="name">Bot</div>
       <div class="time" id="timeB">0.00</div>
-      <div class="med">MEDIAN<b id="medB">–</b></div>
-      <div class="info">Monkey League<small>S6 Swiss R3: bo5 sets</small></div>
+      <div class="med" id="medCellB">MEDIAN<b id="medB">–</b></div>
+      <div class="info">Monkey League<small id="matchFormat">S6 Swiss R3: bo5 sets</small></div>
     </div>
-    <div class="cfg">
-      Bot – trung bình (giây): <input id="mean" type="number" value="32" min="5" step="0.5">
-      Sigma: <input id="sigma" type="number" value="4" min="0.5" step="0.5">
-      Min: <input id="min" type="number" value="15" min="5" step="0.5">
-    </div>
+    <details class="settings">
+      <summary>⚙️ Setting</summary>
+      <div class="settings-content">
+        <div class="cfg">
+          <label for="mean">Bot – trung bình (giây):</label>
+          <input id="mean" type="number" value="32" min="5" step="0.5">
+          <label for="sigma">Sigma:</label>
+          <input id="sigma" type="number" value="4" min="0.5" step="0.5">
+          <label for="min">Min:</label>
+          <input id="min" type="number" value="15" min="5" step="0.5">
+          <label for="pointsToWin">Điểm để thắng một set:</label>
+          <input id="pointsToWin" type="number" value="3" min="1" step="1">
+          <label for="setsToWin">Sets để thắng trận:</label>
+          <input id="setsToWin" type="number" value="3" min="1" step="1">
+        </div>
+        <p class="settings-note" id="settingsNote">Luật mới áp dụng từ trận tiếp theo.</p>
+        <p class="settings-error" id="settingsError" role="status" hidden></p>
+      </div>
+    </details>
+    <section class="match-console" aria-labelledby="matchConsoleHeading">
+      <div class="panel-heading">
+        <h2 id="matchConsoleHeading">Console trận đấu</h2>
+        <button class="console-download" id="downloadLog" type="button" disabled>Tải .txt</button>
+      </div>
+      <pre class="match-log" id="matchLog" aria-live="polite"></pre>
+      <p class="log-empty" id="logEmpty">Nhật ký sẽ xuất hiện sau ván đầu tiên.</p>
+    </section>
+    <section class="match-history" aria-labelledby="matchHistoryHeading">
+      <h2 id="matchHistoryHeading">Lịch sử các trận đã đấu</h2>
+      <ol class="match-history-list" id="matchHistoryList"></ol>
+      <p class="history-empty" id="historyEmpty">Chưa có trận nào kết thúc.</p>
+      <p class="history-error" id="historyError" role="status" hidden></p>
+    </section>
     <div class="hint">Space (hoặc chạm màn hình): bắt đầu xem scramble, bắt đầu giải, dừng. Mỗi lượt có 15 giây xem
       scramble theo luật WCA: quá 15 giây mới giải bị +2, quá 17 giây là DNF. Bot tự bắt đầu giải ở một giây ngẫu nhiên
       trong lúc xem. Người đi trước được chọn ngẫu nhiên ở ván 1 rồi đổi lượt mỗi ván. Mỗi set 3 điểm, thắng 3 set là
       thắng trận.</div>
     <div class="leave-match">
       <button class="leave-button" id="leaveMatch" type="button">Rời trận đấu</button>
+    </div>
+  </div>
+  <div class="orientation-notice" id="orientationNotice" hidden>
+    <div class="orientation-card">
+      <div class="orientation-icon" aria-hidden="true">↻</div>
+      <h1>Hãy xoay điện thoại nằm ngang</h1>
+      <p id="orientationStatus">Monkey League cần màn hình ngang để hiển thị đầy đủ.</p>
+      <button id="enableLandscape" type="button">Thử khóa màn hình ngang</button>
     </div>
   </div>
 
